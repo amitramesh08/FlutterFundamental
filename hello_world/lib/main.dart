@@ -20,7 +20,7 @@ class EMetorRestaurant extends StatelessWidget {
   appBar:AppBar(
     title:Text("eMetor restaurant")
   ),
-  body:MenuStatelessWidget()
+  body:HelloInput()
 
   )
   );

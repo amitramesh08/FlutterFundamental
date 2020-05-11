@@ -46,6 +46,7 @@ class MenuStatelessWidget extends StatelessWidget {
         )))
       ]),
       PizzaImageWidget(),
+      //OrderButton
       ]) 
     ));
   }
@@ -58,4 +59,68 @@ class PizzaImageWidget extends StatelessWidget {
     Image image =  Image(image:pizzaAsset,width:300.0,height:300.0);
     return Container(child:image);
   }
+}
+
+class OrderButton extends StatelessWidget {
+  const OrderButton({Key key}) : super(key: key);
+
+
+  @override
+  Widget build(BuildContext context) {
+    var button = Container(
+      margin: EdgeInsets.only(top:50.0),
+      child:RaisedButton(
+        color:Colors.blueAccent.shade400,
+        child:Text("Order your pizza"),
+        onPressed: (){
+          order(context);
+        },
+      )
+    );
+    return button;
+  }
+
+  void order(BuildContext context){
+    var alert = AlertDialog(
+      title:Text("Order Completed"),
+      content: Text("Thanks for your order")
+    );
+    showDialog(
+      context:context,
+      builder: (BuildContext context){
+        return alert;
+      }
+    );
+  }
+}
+
+class HelloInput extends StatefulWidget {
+  HelloInput({Key key}) : super(key: key);
+
+  @override
+  _HelloInputState createState() => _HelloInputState();
+}
+
+class _HelloInputState extends State<HelloInput> {
+  String name="";
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.all(15.0),
+      child: Column(
+       children : <Widget>[
+         TextField(
+           onChanged: (String change){
+             setState(() {
+               name=change;
+             });
+           },
+         )
+         ,
+         Text("Hello " + name)
+       ],
+    )
+    ); 
+  }
+  
 }
